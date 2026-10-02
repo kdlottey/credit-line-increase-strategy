@@ -45,6 +45,10 @@ def roc(roc_df: pd.DataFrame) -> go.Figure:
 
 
 def profit_curve(sweep: pd.DataFrame, chosen: float) -> go.Figure:
+    # beyond the cut-off where eligibility stops growing the curve is flat; trim it
+    grows = sweep.eligible.diff().fillna(1) > 0
+    last = sweep.loc[grows, "pd_cutoff"].max() if grows.any() else sweep.pd_cutoff.max()
+    sweep = sweep[sweep.pd_cutoff <= max(last + 0.05, chosen + 0.05)]
     fig = go.Figure()
     fig.add_scatter(x=sweep.pd_cutoff, y=sweep.expected_profit, mode="lines+markers",
                     name="Expected profit", line=dict(color=BLUE))

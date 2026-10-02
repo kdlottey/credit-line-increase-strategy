@@ -7,6 +7,8 @@ from ui import charts, loaders as L
 acct = L.guard(L.table, "accounts")
 util = L.guard(L.table, "seg_util_band")
 ctype = L.guard(L.table, "seg_customer_type")
+for seg in (util, ctype):   # SQL prefixes ("0. ", "1. ") keep the order; hide them on the axis
+    seg["label"] = seg.segment.str.replace(r"^\d\. ", "", regex=True)
 
 c = st.columns(4)
 c[0].metric("Accounts", f"{len(acct):,}")
@@ -15,10 +17,10 @@ c[2].metric("Avg utilization", f"{acct.util_now.clip(0, 2).mean() * 100:.1f}%")
 c[3].metric("Revolvers (carry a balance)", f"{(acct.customer_type == '3. Revolver').mean() * 100:.1f}%")
 
 l, r = st.columns(2)
-l.plotly_chart(charts.bar(util, "segment", "default_rate_pct", "Default rate by utilization band",
+l.plotly_chart(charts.bar(util, "label", "default_rate_pct", "Default rate by utilization band",
                           "Utilization (balance ÷ limit)", "Default rate (%)",
                           hover=["accounts", "pct_of_book"]), width="stretch")
-r.plotly_chart(charts.bar(ctype, "segment", "default_rate_pct", "Default rate by customer type (latest month)",
+r.plotly_chart(charts.bar(ctype, "label", "default_rate_pct", "Default rate by customer type (latest month)",
                           "", "Default rate (%)", hover=["accounts", "pct_of_book"]), width="stretch")
 
 # Insight text is computed from the data so it always matches the charts above.

@@ -88,6 +88,8 @@ st.divider()
 st.markdown("**Across the holdout portfolio**")
 hold = L.guard(L.split, "holdout")
 val = L.guard(L.table, "reason_validation")
+pct_cols = [c for c in val.columns if "%" in c]
+val[pct_cols] = val[pct_cols].astype(float)
 l, r = st.columns([1, 2])
 l.metric("RLI approval rate", f"{s['rli_approval_rate']:.1f}%")
 approved_rate = hold.loc[hold.rli_decision == "APPROVE", "default_next_month"].mean() * 100
@@ -97,7 +99,7 @@ r.plotly_chart(charts.hbar(counts, "How often each decline reason is cited", "De
                            charts.RED), width="stretch")
 
 st.markdown("**Do the reasons point at real risk?**")
-st.dataframe(val.style.format({c: "{:.1f}" for c in val.columns if "%" in c}, na_rep="-"),
+st.dataframe(val.style.format({c: "{:.1f}" for c in pct_cols}, na_rep="-"),
              hide_index=True, width="stretch")
 t = s["r05_rule_test"]
 st.caption(f"Rules are kept only if they earn their place. A candidate rule, *decline if repayment ratio < "

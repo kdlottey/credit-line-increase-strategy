@@ -28,6 +28,15 @@ All results are on a **holdout set (6,000 accounts)** that was never used for tr
 - **Monitoring:** month-over-month score PSI **0.027** (stable), using a genuine one-month-earlier snapshot rebuilt from the 6-month history.
 - **Fair lending:** the rule-based champion fails the four-fifths rule for two age groups; the challenger brings the approval rates of most groups within it, with one group (35–44, AIR 0.76) left for review.
 
+## Screenshots
+| Risk model | PLI strategy |
+|---|---|
+| ![](images/risk_model.png) | ![](images/pli_strategy.png) |
+
+| RLI decision engine | Monitoring & controls |
+|---|---|
+| ![](images/rli_engine.png) | ![](images/monitoring.png) |
+
 ## Approach
 | Step | What | Tools |
 |---|---|---|
