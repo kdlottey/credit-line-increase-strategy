@@ -1,4 +1,6 @@
 __pycache__/
 .ipynb_checkpoints/
+.pytest_cache/
 *.pyc
 .DS_Store
+# artifacts/ is committed on purpose: the deployed app reads it instead of retraining

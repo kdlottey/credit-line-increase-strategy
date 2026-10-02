@@ -1,0 +1,23 @@
+{
+ "kind": "xgboost",
+ "name": "XGBoost",
+ "params": {
+  "n_trees": 325,
+  "validation_ece": 0.014196126013994215,
+  "recalibrated": false
+ },
+ "calib_x": [],
+ "calib_y": [],
+ "features": [
+  "limit_amt",
+  "util_now",
+  "util_avg",
+  "worst_delay",
+  "months_delayed",
+  "pay_ratio",
+  "pay_status_1",
+  "pay_status_2",
+  "bill_1",
+  "paid_1"
+ ]
+}

@@ -1,0 +1,51 @@
+{
+  "model": "XGBoost",
+  "n_trees": 325,
+  "calibration": {
+    "brier": 0.13469022512435913,
+    "holdout_ece": 0.011485531364878027,
+    "validation_ece": 0.014196126013994215,
+    "recalibrated": false,
+    "mean_pd": 0.22108259797096252,
+    "actual_rate": 0.22116666666666668
+  },
+  "cutoff": 0.18,
+  "cutoff_reason": "profit peak",
+  "champion_default_rate_valid": 12.205567451820128,
+  "champion": {
+    "Strategy": "Champion (rules)",
+    "Eligible accounts": 1314,
+    "% of book": 21.9,
+    "Default rate %": 12.32876712328767,
+    "Line granted": 30406000.0,
+    "New balance": 24420764.32730968,
+    "Expected profit": 1131045.015822684,
+    "Realized profit": 1185072.1673070265
+  },
+  "challenger": {
+    "Strategy": "Challenger (PD \u2264 0.18)",
+    "Eligible accounts": 1575,
+    "% of book": 26.25,
+    "Default rate %": 10.793650793650794,
+    "Line granted": 41172000.0,
+    "New balance": 27487844.261166073,
+    "Expected profit": 1413357.3390305454,
+    "Realized profit": 1449865.7749815318
+  },
+  "r05_rule_test": {
+    "threshold": 0.05,
+    "would_decline": 1048,
+    "default_rate_newly_declined": 11.354961832061068,
+    "default_rate_remaining_approved": 9.719222462203025
+  },
+  "rli_approval_rate": 56.05,
+  "psi_month_over_month": 0.026844706751924904,
+  "psi_month_over_month_status": "Stable",
+  "psi_build_vs_holdout": 0.0013882365874636868,
+  "fairness_min_air": 0.6785969733805471,
+  "split_sizes": {
+    "train": 18000,
+    "valid": 6000,
+    "holdout": 6000
+  }
+}
