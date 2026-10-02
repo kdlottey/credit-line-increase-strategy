@@ -4,7 +4,7 @@
 
 ### 🔗 [Live app](https://credit-line-increase-strategy.streamlit.app) · [Notebook](notebooks/credit_line_increase_strategy.ipynb)
 
-![App screenshot](images/portfolio.png)
+![Portfolio page: default rate by utilization band and customer type, with key insights](images/portfolio.png)
 
 ## Business problem
 Card issuers grow balances by raising credit limits, but giving more credit to the wrong customer increases losses. A good strategy gives more line to customers who will **use** it and **repay** it, and has to explain every decline.
@@ -31,11 +31,11 @@ All results are on a **holdout set (6,000 accounts)** that was never used for tr
 ## Screenshots
 | Risk model | PLI strategy |
 |---|---|
-| ![](images/risk_model.png) | ![](images/pli_strategy.png) |
+| ![Risk model: holdout metrics, ROC curve and predicted vs actual default rate by risk band](images/risk_model.png) | ![PLI strategy: champion vs challenger results and expected profit by PD cut-off](images/pli_strategy.png) |
 
 | RLI decision engine | Monitoring & controls |
 |---|---|
-| ![](images/rli_engine.png) | ![](images/monitoring.png) |
+| ![RLI decision engine: customer inputs, decision and predicted default probability](images/rli_engine.png) | ![Monitoring: data-quality controls and month-over-month score stability](images/monitoring.png) |
 
 ## Approach
 | Step | What | Tools |
@@ -68,7 +68,7 @@ All results are on a **holdout set (6,000 accounts)** that was never used for tr
 ├── scripts/build_artifacts.py  # Offline pipeline: data -> model -> strategy -> artifacts
 ├── artifacts/                  # Model (JSON, no pickles) and result tables the app reads
 ├── tests/                      # pytest suite on synthetic data
-├── notebooks/                  # Step-by-step exploration
+├── notebooks/                  # First exploratory pass (70/30 split; numbers differ from the app)
 └── data/                       # UCI_Credit_Card.csv (see data/README.md)
 ```
 
